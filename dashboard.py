@@ -6,9 +6,18 @@ import os
 import io
 from dotenv import load_dotenv
 import anthropic
-from database import get_articles, get_stats, initialise_database
 import streamlit_authenticator as stauth
 from gtts import gTTS
+
+# ── 1. MAP CLOUD SECRETS TO ENVIRONMENT (DO THIS FIRST!) ─────────────────────
+# This ensures that when we import 'database' below, it can find the URL.
+if "DATABASE_URL" in st.secrets:
+    os.environ["DATABASE_URL"] = st.secrets["DATABASE_URL"]
+else:
+    load_dotenv() # Fallback for local development
+
+# ── 2. NOW IMPORT DATABASE FUNCTIONS ──────────────────────────────────────────
+from database import get_articles, get_stats, initialise_database
 
 load_dotenv()
 

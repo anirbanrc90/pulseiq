@@ -1,0 +1,10 @@
+.env
+venv/
+__pycache__/
+research_digest.db
+raw_articles.json
+analysed_articles.json
+*.db
+*.pyc
+secrets.toml
+secrets.toml.example
